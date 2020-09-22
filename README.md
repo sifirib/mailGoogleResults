@@ -12,6 +12,6 @@ Add a new line to set a job like this to the bottom line:
 
 (This job will run googlescan.py 1 time in 30 minutes.)
 
-[More Commands](https://phoenixnap.com/kb/set-up-cron-job-linux "More commands")
+[More cron job Commands](https://phoenixnap.com/kb/set-up-cron-job-linux "More commands")
 
 
