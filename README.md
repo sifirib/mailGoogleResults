@@ -2,7 +2,7 @@
 ###### This script ensures that your predetermined query is sent to you as soon as it is published on the internet.This script ensures that your predetermined query is sent to you as soon as it is published on the internet.
 ------------
 ##### You can set a cron job to run it often as you want. 
-A simple cron job configuration:
+A simple cron job configuration, say terminal:
 
 `crontab -e`
 
