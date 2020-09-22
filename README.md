@@ -6,7 +6,7 @@ A simple cron job configuration, say terminal:
 
 `crontab -e`
 
-Add a new line to set a job like this to the bottom line:
+Add a new line to set a job like follow command to the bottom line:
 
 `*/30 * * * * /usr/bin/python3 ~/Desktop/projects/python/googleScan/googlescan.py`
 
