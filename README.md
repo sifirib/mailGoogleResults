@@ -12,6 +12,9 @@ Add a new line to set a job like follow command to the bottom line:
 
 (This job will run googlescan.py 1 time in 30 minutes.)
 
-[More cron job Commands](https://phoenixnap.com/kb/set-up-cron-job-linux "More commands")
+[Cron Job Commands](https://phoenixnap.com/kb/set-up-cron-job-linux "More commands")
 
+##### NOTE: 
+You should [turn on](https://myaccount.google.com/lesssecureapps) less secure apps setting for your google account to connect your email with this script.
 
+And using 2-factor authentication will cause problem connecting to your gmail account.
