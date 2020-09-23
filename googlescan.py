@@ -1,34 +1,37 @@
 import time
 import os
-import smtplib
-import ssl
+import smtplib, ssl
+port = 465
 
 try:
     from googlesearch import search
 except importerror:
     print("no module named 'google' found")
 
-#query = input("What you want to search? :")
-query = "Coranavirus" # your query here
-query = (''.join(query)).encode('utf-8')
 
-os.system(f'notify-send "hi"')
+def read_credentials():
+    sender = password = ""
+    with open("credentials.txt", "r") as f:
+        file = f.readlines()
+        sender = file[0].strip()
+        password = file[1].strip()
+    return sender, password
 
-port = 465
-sender = "example@example.com" # your email here
-password = "password" # your password here
-recieve = sender
+def read_query():
+    queries = []
+    with open("query.txt", "r") as f:
+        file = f.readlines()
+        i = 0
+        while True:
+            try:
+                q = str(file[i].strip())
+                queries.append(q)
+                i += 1
+            except:
+                return queries
+                break
 
-def send_mail(query, j):
-
-    message = f"""\
-    Subject: Results for {query}
-
-    Results for {query}:
-    {j}
-
-    from googlescan
-    """
+def send_mail():
 
     context = ssl.create_default_context()
     print("starting to send")
@@ -38,21 +41,33 @@ def send_mail(query, j):
     print("sent mail")
 
 
+sender, password = read_credentials()
+recieve = sender
+queries = read_query()
+
 
 while True:
 
-    results = list(search(query, num=10, stop=1, pause=2))
-    file = open(f"notification.txt", "a")
-    if len(results) == 0:
-        print("no results.")
-    else:
-        for j in results:
-            print(f"results of '{query}': \n{j}")
-            os.system(f'notify-send "results of {query}: \n{j}"')
-            file.write(f"{j}\n")
+    subject = "Subject: Results For Queries"
+    message = ""
+    close = "\nfrom googlescan"
+    for query in queries:
+        query = (''.join(query)).encode('utf-8')
 
-            send_mail(query, j)
+        results = list(search(query, num=10, stop=1, pause=2))
 
-    file.close()
+        if len(results) == 0:
+            print("no results.")
+        else:
+            for j in results:
+                print(f"results of '{query}': \n{j}")
+                os.system(f'notify-send "results of {query}: \n{j}"')
+
+                message += f"""\nResults for {query}:\n{j}"""
+
+
+        time.sleep(5)
+    message = subject + message + close
+    send_mail()
     time.sleep(5)
     exit()
