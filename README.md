@@ -8,7 +8,7 @@ A simple cron job configuration, say terminal:
 
 Add a new line to set a job like follow command to the bottom line:
 
-`*/30 * * * * /usr/bin/python3 ~/Desktop/projects/python/googleScan/googlescan.py`
+`*/30 * * * * /usr/bin/python3 <path_to_googlescan.py>`
 
 (This job will run googlescan.py 1 time in 30 minutes.)
 
